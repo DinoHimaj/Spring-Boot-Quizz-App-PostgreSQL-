@@ -3,10 +3,8 @@ package com.example.quizapp.controller;
 import com.example.quizapp.model.Question;
 import com.example.quizapp.sevice.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,11 +14,6 @@ public class QuestionController {
 
     @Autowired
     QuestionService questionService;
-
-//    @GetMapping("test")
-//        public String test(){
-//            return "Hello World";
-//        }
 
 
     @GetMapping("/all")
@@ -32,4 +25,24 @@ public class QuestionController {
     public List<Question> getQuestionsByCategory(@PathVariable String category){
         return questionService.getQuestionsByCategory(category);
     }
+
+    @PostMapping("add")
+    public String postQuestion(@RequestBody Question question){
+       return questionService.addQuestion(question);
+    }
+
+    @DeleteMapping("remove/{id}")
+
+    public ResponseEntity<String> removeQuestion(@PathVariable Integer id) {
+
+        return questionService.removeQuestion(id);
+
+    }
+
+
+//    @GetMapping("test")
+//        public String test(){
+//            return "Hello World";
+//        }
+
 }
