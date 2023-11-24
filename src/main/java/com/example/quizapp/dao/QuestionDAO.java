@@ -8,5 +8,9 @@ import java.util.List;
 
 @Repository
 public interface QuestionDAO extends JpaRepository<Question, Integer> {
+    
+    static List<Question> findRandomQuestions(String category, int numQ) {
+    }
+
     List<Question> findByCategory(String category);
 }
