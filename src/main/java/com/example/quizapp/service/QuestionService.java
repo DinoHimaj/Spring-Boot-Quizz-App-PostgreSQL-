@@ -1,4 +1,4 @@
-package com.example.quizapp.sevice;
+package com.example.quizapp.service;
 
 import com.example.quizapp.dao.QuestionDAO;
 import com.example.quizapp.model.Question;
